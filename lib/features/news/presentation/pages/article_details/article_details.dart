@@ -1,9 +1,12 @@
+import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:intl/intl.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:provider/provider.dart';
+import '../../../../../core/shared/constants.dart';
 import '../../../../../injection_container.dart';
 import '../../../../../l10n/provider/locale.dart';
 import '../../../domain/entities/article.dart';
@@ -75,7 +78,7 @@ class ArticleDetailsView extends HookWidget {
                 const Icon(Ionicons.time_outline, size: 16),
                 const SizedBox(width: 4),
                 Text(
-                  DateFormat('d MMMM yyyy',
+                  DateFormat(kDefaultDateFormat,
                           localeModel.locale?.languageCode ?? "en_US")
                       .format(DateTime.parse(article!.publishedAt!)),
                   style: const TextStyle(fontSize: 12),
@@ -93,7 +96,41 @@ class ArticleDetailsView extends HookWidget {
       width: double.maxFinite,
       height: 250,
       margin: const EdgeInsets.only(top: 14),
-      child: Image.network(article!.urlToImage!, fit: BoxFit.cover),
+      child: CachedNetworkImage(
+        imageUrl: article!.urlToImage!,
+        imageBuilder: (context, imageProvider) => Container(
+          // width: MediaQuery.of(context).size.width / 3,
+          height: double.maxFinite,
+          decoration: BoxDecoration(
+              image: DecorationImage(image: imageProvider, fit: BoxFit.cover)),
+        ),
+        progressIndicatorBuilder: (context, url, downloadProgress) => Padding(
+          padding: const EdgeInsetsDirectional.only(end: 14),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(12.0),
+            child: Container(
+              width: MediaQuery.of(context).size.width / 3,
+              height: double.maxFinite,
+              decoration: const BoxDecoration(),
+              child: const CupertinoActivityIndicator(),
+            ),
+          ),
+        ),
+        errorWidget: (context, url, error) => Padding(
+          padding: const EdgeInsetsDirectional.only(end: 14),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(12.0),
+            child: Container(
+              width: MediaQuery.of(context).size.width / 3,
+              height: double.maxFinite,
+              decoration: const BoxDecoration(),
+              child: Image.asset("assets/images/logo.png"),
+            ),
+          ),
+        ),
+      ),
+
+      // child: Image.network(article!.urlToImage!, fit: BoxFit.cover),
     );
   }
 
@@ -111,19 +148,14 @@ class ArticleDetailsView extends HookWidget {
     return Builder(
       builder: (context) => FloatingActionButton.extended(
           onPressed: () => _onFloatingActionButtonPressed(context),
-          icon: const Icon(Ionicons.bookmark, color: Colors.white),
+          icon: const Icon(Ionicons.bookmark),
           label: Text(
             AppLocalizations.of(context)?.saveArticle ?? 'Save Article',
             style: const TextStyle(
-              color: Colors.white,
               fontWeight: FontWeight.bold,
             ),
           )),
     );
-  }
-
-  void _onBackButtonTapped(BuildContext context) {
-    Navigator.pop(context);
   }
 
   void _onFloatingActionButtonPressed(BuildContext context) {
@@ -136,5 +168,9 @@ class ArticleDetailsView extends HookWidget {
         ),
       ),
     );
+  }
+
+  void _onBackButtonTapped(BuildContext context) {
+    Navigator.pop(context);
   }
 }

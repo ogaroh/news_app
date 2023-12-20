@@ -6,5 +6,13 @@
   "headlines": "Titres",
   "changeLanguage": "Changer de Langue",
   "noSavedArticles": "Aucun article sauvegardé",
-  "successMessage": "Article sauvegardé avec succès !"
+  "successMessage": "Article sauvegardé avec succès !",
+  "newArticle": "Nouvel Article",
+  "title": "Titre de l'Article",
+  "description": "Description de l'Article",
+  "author": "Auteur",
+  "url": "URL",
+  "urlToImage": "URL de l'Image",
+  "content": "Contenu",
+  "isRequired": "est requis"
 }

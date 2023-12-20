@@ -1,10 +1,18 @@
 {
   "language": "Kiswahili",
   "buttonHint": "Badilisha Lugha",
-  "savedArticles": "Makala Zilizohifadhiwa",
+  "savedArticles": "Makala Yaliyohifadhiwa",
   "saveArticle": "Hifadhi Makala",
   "headlines": "Maneno Makuu",
   "changeLanguage": "Badilisha Lugha",
-  "noSavedArticles": "Hakuna makala zilizohifadhiwa",
-  "successMessage": "Makala imehifadhiwa kwa mafanikio!"
+  "noSavedArticles": "Hakuna makala yaliyohifadhiwa",
+  "successMessage": "Makala yamehifadhiwa kwa mafanikio!",
+  "newArticle": "Makala Mapya",
+  "title": "Kichwa cha Makala",
+  "description": "Maelezo ya Makala",
+  "author": "Mwandishi",
+  "url": "Kifungu cha URL",
+  "urlToImage": "Kifungu cha Picha",
+  "content": "Yaliyomo",
+  "isRequired": "inahitajika"
 }

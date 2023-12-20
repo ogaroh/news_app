@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../features/news/domain/entities/article.dart';
 import '../../features/news/presentation/pages/article_details/article_details.dart';
 import '../../features/news/presentation/pages/home/news.dart';
+import '../../features/news/presentation/pages/new_article/new_article.dart';
 import '../../features/news/presentation/pages/saved/saved_articles.dart';
 
 class AppRoutes {
@@ -10,6 +11,9 @@ class AppRoutes {
     switch (settings.name) {
       case '/':
         return _materialRoute(const NewsHome());
+
+      case '/new-article':
+        return _materialRoute(const NewArticle());
 
       case '/article-details':
         return _materialRoute(

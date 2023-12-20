@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ionicons/ionicons.dart';
 
 import '../../../domain/entities/article.dart';
 import '../../bloc/article/remote/remote_article_bloc.dart';
@@ -17,9 +18,11 @@ class NewsHome extends StatelessWidget {
     return Scaffold(
       appBar: _buildAppbar(context),
       body: _buildBody(),
+      floatingActionButton: _buildFloatingActionButton(),
     );
   }
 
+  // app bar
   _buildAppbar(BuildContext context) {
     return AppBar(
       leading: const LocaleSwitcher(),
@@ -36,6 +39,7 @@ class NewsHome extends StatelessWidget {
     );
   }
 
+  // body
   _buildBody() {
     return BlocBuilder<RemoteArticlesBloc, RemoteArticlesState>(
       builder: (_, state) {
@@ -62,10 +66,32 @@ class NewsHome extends StatelessWidget {
     );
   }
 
+  // floating action button
+  Widget _buildFloatingActionButton() {
+    return Builder(
+      builder: (context) => FloatingActionButton.extended(
+          onPressed: () => _onFloatingActionButtonPressed(context),
+          icon: const Icon(Ionicons.newspaper),
+          label: Text(
+            AppLocalizations.of(context)?.newArticle ?? 'New Article',
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
+          )),
+    );
+  }
+
+  // on floating action button pressed
+  void _onFloatingActionButtonPressed(BuildContext context) {
+    Navigator.pushNamed(context, '/new-article');
+  }
+
+  // navigate to article details
   void _onArticlePressed(BuildContext context, ArticleEntity article) {
     Navigator.pushNamed(context, '/article-details', arguments: article);
   }
 
+  // navigate to saved articles view
   void _onShowSavedArticlesViewTapped(BuildContext context) {
     Navigator.pushNamed(context, '/saved-articles');
   }

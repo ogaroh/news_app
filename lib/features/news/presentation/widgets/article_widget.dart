@@ -3,6 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
+import '../../../../core/shared/constants.dart';
 import '../../../../l10n/provider/locale.dart';
 import '../../domain/entities/article.dart';
 
@@ -42,44 +43,45 @@ class ArticleWidget extends StatelessWidget {
 
   Widget _buildImage(BuildContext context) {
     return CachedNetworkImage(
-        imageUrl: article!.urlToImage!,
-        imageBuilder: (context, imageProvider) => Padding(
-              padding: const EdgeInsetsDirectional.only(end: 14),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(12.0),
-                child: Container(
-                  width: MediaQuery.of(context).size.width / 3,
-                  height: double.maxFinite,
-                  decoration: BoxDecoration(
-                      image: DecorationImage(
-                          image: imageProvider, fit: BoxFit.cover)),
-                ),
-              ),
-            ),
-        progressIndicatorBuilder: (context, url, downloadProgress) => Padding(
-              padding: const EdgeInsetsDirectional.only(end: 14),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(12.0),
-                child: Container(
-                  width: MediaQuery.of(context).size.width / 3,
-                  height: double.maxFinite,
-                  decoration: const BoxDecoration(),
-                  child: const CupertinoActivityIndicator(),
-                ),
-              ),
-            ),
-        errorWidget: (context, url, error) => Padding(
-              padding: const EdgeInsetsDirectional.only(end: 14),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(12.0),
-                child: Container(
-                  width: MediaQuery.of(context).size.width / 3,
-                  height: double.maxFinite,
-                  decoration: const BoxDecoration(),
-                  child: const Icon(Icons.error),
-                ),
-              ),
-            ));
+      imageUrl: article!.urlToImage!,
+      imageBuilder: (context, imageProvider) => Padding(
+        padding: const EdgeInsetsDirectional.only(end: 14),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(12.0),
+          child: Container(
+            width: MediaQuery.of(context).size.width / 3,
+            height: double.maxFinite,
+            decoration: BoxDecoration(
+                image:
+                    DecorationImage(image: imageProvider, fit: BoxFit.cover)),
+          ),
+        ),
+      ),
+      progressIndicatorBuilder: (context, url, downloadProgress) => Padding(
+        padding: const EdgeInsetsDirectional.only(end: 14),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(12.0),
+          child: Container(
+            width: MediaQuery.of(context).size.width / 3,
+            height: double.maxFinite,
+            decoration: const BoxDecoration(),
+            child: const CupertinoActivityIndicator(),
+          ),
+        ),
+      ),
+      errorWidget: (context, url, error) => Padding(
+        padding: const EdgeInsetsDirectional.only(end: 14),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(12.0),
+          child: Container(
+            width: MediaQuery.of(context).size.width / 3,
+            height: double.maxFinite,
+            decoration: const BoxDecoration(),
+            child: Image.asset("assets/images/logo.png"),
+          ),
+        ),
+      ),
+    );
   }
 
   Widget _buildTitleAndDescription() {
@@ -119,7 +121,7 @@ class ArticleWidget extends StatelessWidget {
                   const Icon(Icons.timeline_outlined, size: 16),
                   const SizedBox(width: 4),
                   Text(
-                    DateFormat('d MMMM yyyy',
+                    DateFormat(kDefaultDateFormat,
                             localeModel.locale?.languageCode ?? "en_US")
                         .format(DateTime.parse(article!.publishedAt!)),
                     style: const TextStyle(

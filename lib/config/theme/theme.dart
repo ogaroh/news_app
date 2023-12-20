@@ -8,11 +8,13 @@ const kDefaultReddishGrey = Color(0XFF664848);
 // light theme
 ThemeData theme() {
   return ThemeData(
+    colorSchemeSeed: kDefaultReddishGrey,
     scaffoldBackgroundColor: Colors.white,
     fontFamily: kDefaultFontFamily,
     appBarTheme: appBarTheme(),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: kDefaultReddishGrey,
+      foregroundColor: Colors.white,
     ),
   );
 }
@@ -20,12 +22,14 @@ ThemeData theme() {
 // dark theme
 ThemeData darkTheme() {
   return ThemeData(
+    colorSchemeSeed: kDefaultRed,
     brightness: Brightness.dark,
     scaffoldBackgroundColor: Colors.black,
     fontFamily: kDefaultFontFamily,
     appBarTheme: appBarThemeDark(),
     floatingActionButtonTheme: const FloatingActionButtonThemeData(
       backgroundColor: kDefaultRed,
+      foregroundColor: Colors.white,
     ),
   );
 }
