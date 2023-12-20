@@ -1,6 +1,7 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
+
+final String kAPIKey = dotenv.env['API_KEY'] ?? "";
 const String kBaseURL = 'https://newsapi.org/v2';
-const String kAPIKey =
-    'db2b63624fa8426080baecb41f0112e9'; // TODO: use the .env file to store this instead
 const String kCountryQuery = 'us';
 const String kCategoryQuery = 'general';
 

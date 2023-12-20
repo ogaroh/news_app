@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 
 import 'config/routes/routes.dart';
 import 'config/theme/theme.dart';
@@ -9,6 +10,10 @@ import 'features/news/presentation/pages/home/news.dart';
 import 'injection_container.dart';
 
 Future<void> main() async {
+  // load .env file
+  await dotenv.load(fileName: ".env");
+
+  // initialize dependencies
   WidgetsFlutterBinding.ensureInitialized();
   await initializeDependencies();
   runApp(const MyApp());

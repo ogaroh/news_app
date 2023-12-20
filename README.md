@@ -2,12 +2,12 @@
 
 A Flutter project that implements a simple application.
 
-## Provides a showcase app for: 
+## Provides a showcase for: 
 - Clean architecture in Flutter (Data - Domain - Presentation pattern) ✅
 - Calling an API ✅
-- Authenticating an API
+- Authenticating an API ✅ (*Using an API key)
 - Github Pipeline/Action
-- Themeing
+- Themeing ✅
 - Language Translation (Localization/Internationalization)
 - Forms and Form Validation
 - State management using BLoC ✅
