@@ -21,15 +21,14 @@ class NewsHome extends StatelessWidget {
   _buildAppbar(BuildContext context) {
     return AppBar(
       title: const Text(
-        'Daily News',
-        style: TextStyle(color: Colors.black),
+        'Headlines',
       ),
       actions: [
         GestureDetector(
           onTap: () => _onShowSavedArticlesViewTapped(context),
           child: const Padding(
             padding: EdgeInsets.symmetric(horizontal: 14),
-            child: Icon(Icons.bookmark, color: Colors.black),
+            child: Icon(Icons.bookmark),
           ),
         ),
       ],
@@ -63,10 +62,10 @@ class NewsHome extends StatelessWidget {
   }
 
   void _onArticlePressed(BuildContext context, ArticleEntity article) {
-    Navigator.pushNamed(context, '/ArticleDetails', arguments: article);
+    Navigator.pushNamed(context, '/article-details', arguments: article);
   }
 
   void _onShowSavedArticlesViewTapped(BuildContext context) {
-    Navigator.pushNamed(context, '/SavedArticles');
+    Navigator.pushNamed(context, '/saved-articles');
   }
 }

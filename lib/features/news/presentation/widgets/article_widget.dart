@@ -1,4 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import '../../domain/entities/article.dart';
 
@@ -42,12 +43,11 @@ class ArticleWidget extends StatelessWidget {
         imageBuilder: (context, imageProvider) => Padding(
               padding: const EdgeInsetsDirectional.only(end: 14),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(20.0),
+                borderRadius: BorderRadius.circular(12.0),
                 child: Container(
                   width: MediaQuery.of(context).size.width / 3,
                   height: double.maxFinite,
                   decoration: BoxDecoration(
-                      color: Colors.black.withOpacity(0.08),
                       image: DecorationImage(
                           image: imageProvider, fit: BoxFit.cover)),
                 ),
@@ -56,27 +56,23 @@ class ArticleWidget extends StatelessWidget {
         progressIndicatorBuilder: (context, url, downloadProgress) => Padding(
               padding: const EdgeInsetsDirectional.only(end: 14),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(20.0),
+                borderRadius: BorderRadius.circular(12.0),
                 child: Container(
                   width: MediaQuery.of(context).size.width / 3,
                   height: double.maxFinite,
-                  decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.08),
-                  ),
-                  child: const CircularProgressIndicator.adaptive(),
+                  decoration: const BoxDecoration(),
+                  child: const CupertinoActivityIndicator(),
                 ),
               ),
             ),
         errorWidget: (context, url, error) => Padding(
               padding: const EdgeInsetsDirectional.only(end: 14),
               child: ClipRRect(
-                borderRadius: BorderRadius.circular(20.0),
+                borderRadius: BorderRadius.circular(12.0),
                 child: Container(
                   width: MediaQuery.of(context).size.width / 3,
                   height: double.maxFinite,
-                  decoration: BoxDecoration(
-                    color: Colors.black.withOpacity(0.08),
-                  ),
+                  decoration: const BoxDecoration(),
                   child: const Icon(Icons.error),
                 ),
               ),
@@ -97,10 +93,8 @@ class ArticleWidget extends StatelessWidget {
               maxLines: 3,
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(
-                fontFamily: 'Butler',
                 fontWeight: FontWeight.w900,
                 fontSize: 18,
-                color: Colors.black87,
               ),
             ),
 
@@ -140,7 +134,7 @@ class ArticleWidget extends StatelessWidget {
         onTap: _onRemove,
         child: const Padding(
           padding: EdgeInsets.symmetric(horizontal: 8),
-          child: Icon(Icons.remove_circle_outline, color: Colors.red),
+          child: Icon(Icons.delete, color: Colors.red),
         ),
       );
     }

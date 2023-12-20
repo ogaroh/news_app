@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 
+import '../../core/shared/constants.dart';
+
+const kDefaultRed = Color(0XFFba4141);
+const kDefaultReddishGrey = Color(0XFF664848);
+
 // light theme
 ThemeData theme() {
   return ThemeData(
     scaffoldBackgroundColor: Colors.white,
-    fontFamily: 'Newsreader',
+    fontFamily: kDefaultFontFamily,
     appBarTheme: appBarTheme(),
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      backgroundColor: kDefaultReddishGrey,
+    ),
   );
 }
 
@@ -14,8 +22,11 @@ ThemeData darkTheme() {
   return ThemeData(
     brightness: Brightness.dark,
     scaffoldBackgroundColor: Colors.black,
-    fontFamily: 'Newsreader',
+    fontFamily: kDefaultFontFamily,
     appBarTheme: appBarThemeDark(),
+    floatingActionButtonTheme: const FloatingActionButtonThemeData(
+      backgroundColor: kDefaultRed,
+    ),
   );
 }
 
@@ -25,8 +36,14 @@ AppBarTheme appBarTheme() {
     color: Colors.white,
     elevation: 0,
     centerTitle: true,
-    iconTheme: IconThemeData(color: Color(0XFF8B8B8B)),
-    titleTextStyle: TextStyle(color: Color(0XFF8B8B8B), fontSize: 18),
+    iconTheme: IconThemeData(color: kDefaultReddishGrey),
+    actionsIconTheme: IconThemeData(color: kDefaultReddishGrey),
+    titleTextStyle: TextStyle(
+      color: kDefaultReddishGrey,
+      fontSize: 18,
+      fontFamily: kDefaultFontFamily,
+      fontWeight: FontWeight.bold,
+    ),
   );
 }
 
@@ -36,7 +53,13 @@ AppBarTheme appBarThemeDark() {
     color: Colors.black,
     elevation: 0,
     centerTitle: true,
-    iconTheme: IconThemeData(color: Colors.white),
-    titleTextStyle: TextStyle(color: Colors.white, fontSize: 18),
+    iconTheme: IconThemeData(color: kDefaultRed),
+    actionsIconTheme: IconThemeData(color: kDefaultRed),
+    titleTextStyle: TextStyle(
+      color: kDefaultRed,
+      fontSize: 18,
+      fontFamily: kDefaultFontFamily,
+      fontWeight: FontWeight.bold,
+    ),
   );
 }

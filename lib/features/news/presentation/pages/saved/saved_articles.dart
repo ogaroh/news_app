@@ -30,11 +30,10 @@ class SavedArticles extends HookWidget {
         builder: (context) => GestureDetector(
           behavior: HitTestBehavior.opaque,
           onTap: () => _onBackButtonTapped(context),
-          child: const Icon(Ionicons.chevron_back, color: Colors.black),
+          child: const Icon(Ionicons.chevron_back),
         ),
       ),
-      title:
-          const Text('Saved Articles', style: TextStyle(color: Colors.black)),
+      title: const Text('Saved Articles'),
     );
   }
 
@@ -56,7 +55,6 @@ class SavedArticles extends HookWidget {
       return const Center(
           child: Text(
         'NO SAVED ARTICLES',
-        style: TextStyle(color: Colors.black),
       ));
     }
 
@@ -82,6 +80,6 @@ class SavedArticles extends HookWidget {
   }
 
   void _onArticlePressed(BuildContext context, ArticleEntity article) {
-    Navigator.pushNamed(context, '/ArticleDetails', arguments: article);
+    Navigator.pushNamed(context, '/article-details', arguments: article);
   }
 }

@@ -3,15 +3,15 @@
 A Flutter project that implements a simple application.
 
 ## Provides a showcase app for: 
-- Clean architecture in Flutter (Data - Domain - Presentation pattern)
-- Calling an API
+- Clean architecture in Flutter (Data - Domain - Presentation pattern) ✅
+- Calling an API ✅
 - Authenticating an API
 - Github Pipeline/Action
 - Themeing
 - Language Translation (Localization/Internationalization)
 - Forms and Form Validation
-- State management using BLoC
-- Dependency injection
-- On-device storage (Room/Floor Database)
+- State management using BLoC ✅
+- Dependency injection ✅
+- On-device storage (Room/Floor Database) ✅
 
 
