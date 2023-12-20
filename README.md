@@ -1,12 +1,12 @@
 # Simple News App
 
-A Flutter project that implements a simple application.
+A Flutter project that implements a simple news application.
 
 ## Provides a showcase for: 
 - Clean architecture in Flutter (Data - Domain - Presentation pattern) ✅
 - Calling an API ✅
 - Authenticating an API ✅ (*Using an API key)
-- Github Pipeline/Action
+- Github Pipeline/Action ✅ (check out `deploy.yml`)
 - Themeing ✅
 - Language Translation (Localization/Internationalization) ✅
 - Forms and Form Validation ✅

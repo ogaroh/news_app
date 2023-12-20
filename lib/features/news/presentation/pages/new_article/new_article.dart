@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:ionicons/ionicons.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
-import 'package:news_app/features/news/data/models/article.dart';
 import 'package:news_app/features/news/presentation/pages/home/news.dart';
 
 import '../../../../../injection_container.dart';
@@ -161,7 +160,6 @@ class NewArticle extends HookWidget {
                 urlToImage: _urlToImageController.text,
                 publishedAt: DateTime.now().toIso8601String(),
               );
-              print(ArticleModel.fromEntity(article));
               // save entity to local database
               _onFloatingActionButtonPressed(context, article);
             }
