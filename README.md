@@ -10,7 +10,7 @@ A Flutter project that implements a simple news application.
 - Themeing ✅
 - Language Translation (Localization/Internationalization) ✅
 - Forms and Form Validation ✅
-- State management using BLoC ✅
+- State management using BLoC & Provider ✅
 - Dependency injection ✅
 - On-device storage (Room/Floor Database) ✅
 
