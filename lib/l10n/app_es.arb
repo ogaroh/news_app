@@ -1,0 +1,6 @@
+{
+    "helloWorld": "¡Hola Mundo!",
+    "language" : "Espanol",
+    "message": "Has pulsado el botón tantas veces:",
+    "increment": "Incrementar"
+}

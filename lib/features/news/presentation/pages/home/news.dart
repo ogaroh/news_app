@@ -6,6 +6,7 @@ import '../../../domain/entities/article.dart';
 import '../../bloc/article/remote/remote_article_bloc.dart';
 import '../../bloc/article/remote/remote_article_state.dart';
 import '../../widgets/article_widget.dart';
+import '../../widgets/locale_switcher.dart';
 
 class NewsHome extends StatelessWidget {
   const NewsHome({Key? key}) : super(key: key);
@@ -31,6 +32,7 @@ class NewsHome extends StatelessWidget {
             child: Icon(Icons.bookmark),
           ),
         ),
+        const LocaleSwitcher(),
       ],
     );
   }

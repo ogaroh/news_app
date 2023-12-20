@@ -1,0 +1,6 @@
+{
+  "helloWorld": "Hello World!",
+  "language": "English",
+  "message": "You have pushed the button this many times:",
+  "increment": "Increment"
+}
