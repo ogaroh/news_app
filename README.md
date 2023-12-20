@@ -14,4 +14,6 @@ A Flutter project that implements a simple application.
 - Dependency injection ✅
 - On-device storage (Room/Floor Database) ✅
 
+## Screenshots
+![Alt text](Screenshot_1703108137.png) ![Alt text](Screenshot_1703108142.png) ![Alt text](Screenshot_1703108148.png) ![Alt text](Screenshot_1703108151.png) ![Alt text](Screenshot_1703108158.png) ![Alt text](Screenshot_1703110486.png)
 
