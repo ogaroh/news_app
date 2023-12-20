@@ -3,7 +3,7 @@
 A Flutter project that implements a simple application.
 
 ## Provides a showcase app for: 
-- Clean architecture in Flutter
+- Clean architecture in Flutter (Data - Domain - Presentation pattern)
 - Calling an API
 - Authenticating an API
 - Github Pipeline/Action
@@ -11,5 +11,6 @@ A Flutter project that implements a simple application.
 - Translation (Localization/Internationalization)
 - Forms and Form Validation
 - State management using BLoC
+- Dependency injection
 
 

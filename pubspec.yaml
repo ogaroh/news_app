@@ -35,10 +35,23 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
+  ionicons: ^0.2.2
+  get_it: ^7.6.4
+  floor: ^1.4.2
+  flutter_bloc: ^8.1.3
+  flutter_hooks: ^0.20.3
+  equatable: ^2.0.5
+  intl: ^0.19.0
+  retrofit: ^3.3.1
+  cached_network_image: ^3.3.0
+  dio: ^4.0.6
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  retrofit_generator: 3.0.1+1
+  floor_generator: 1.2.0
+  build_runner: 2.1.2
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -82,11 +95,3 @@ flutter:
         - asset: assets/fonts/Newsreader/Newsreader-Variable.ttf
         - asset: assets/fonts/Newsreader/Newsreader-Italic-Variable.ttf
           style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
-  #
-  # For details regarding fonts from package dependencies,
-  # see https://flutter.dev/custom-fonts/#from-packages
