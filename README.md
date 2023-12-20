@@ -8,7 +8,7 @@ A Flutter project that implements a simple application.
 - Authenticating an API ✅ (*Using an API key)
 - Github Pipeline/Action
 - Themeing ✅
-- Language Translation (Localization/Internationalization)
+- Language Translation (Localization/Internationalization) ✅
 - Forms and Form Validation
 - State management using BLoC ✅
 - Dependency injection ✅
