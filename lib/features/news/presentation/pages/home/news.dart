@@ -7,6 +7,7 @@ import '../../bloc/article/remote/remote_article_bloc.dart';
 import '../../bloc/article/remote/remote_article_state.dart';
 import '../../widgets/article_widget.dart';
 import '../../widgets/locale_switcher.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class NewsHome extends StatelessWidget {
   const NewsHome({Key? key}) : super(key: key);
@@ -21,18 +22,16 @@ class NewsHome extends StatelessWidget {
 
   _buildAppbar(BuildContext context) {
     return AppBar(
-      title: const Text(
-        'Headlines',
+      leading: const LocaleSwitcher(),
+      title: Text(
+        AppLocalizations.of(context)?.headlines ?? 'Headlines',
       ),
       actions: [
-        GestureDetector(
-          onTap: () => _onShowSavedArticlesViewTapped(context),
-          child: const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 14),
-            child: Icon(Icons.bookmark),
-          ),
-        ),
-        const LocaleSwitcher(),
+        IconButton(
+          onPressed: () => _onShowSavedArticlesViewTapped(context),
+          icon: const Icon(Icons.bookmark),
+          tooltip: AppLocalizations.of(context)?.savedArticles ?? 'Bookmarks',
+        )
       ],
     );
   }

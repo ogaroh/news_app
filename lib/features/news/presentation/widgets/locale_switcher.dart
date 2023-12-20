@@ -1,9 +1,8 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../../../../l10n/provider/locale.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class LocaleSwitcher extends StatelessWidget {
   const LocaleSwitcher({super.key});
@@ -11,33 +10,31 @@ class LocaleSwitcher extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Consumer<LocaleModel>(builder: (context, localeModel, child) {
-      return DropdownButton(
-        hint: const Text("Change Language"),
-        value: localeModel.locale ?? const Locale("en"),
-        items: const [
-          DropdownMenuItem(
+      return PopupMenuButton<Locale>(
+        itemBuilder: (context) => [
+          const PopupMenuItem(
             value: Locale("en"),
             child: Text("English"),
           ),
-          DropdownMenuItem(
+          const PopupMenuItem(
             value: Locale("sw"),
-            child: Text("Swahili"),
+            child: Text("Kiswahili"),
           ),
-          DropdownMenuItem(
+          const PopupMenuItem(
             value: Locale("fr"),
             child: Text("Français"),
           ),
-          DropdownMenuItem(
+          const PopupMenuItem(
             value: Locale("es"),
-            child: Text("Espanol"),
+            child: Text("Español"),
           ),
         ],
-        onChanged: (value) {
-          log(value.runtimeType.toString());
-          if (value != null) {
-            localeModel.set(value);
-          }
-        },
+        offset: const Offset(0, 50),
+        elevation: 2,
+        icon: const Icon(Icons.language),
+        tooltip:
+            AppLocalizations.of(context)?.changeLanguage ?? 'Change Language',
+        onSelected: (value) => localeModel.set(value),
       );
     });
   }

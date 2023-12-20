@@ -9,6 +9,7 @@ import '../../bloc/article/local/local_article_bloc.dart';
 import '../../bloc/article/local/local_article_event.dart';
 import '../../bloc/article/local/local_article_state.dart';
 import '../../widgets/article_widget.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SavedArticles extends HookWidget {
   const SavedArticles({Key? key}) : super(key: key);
@@ -18,13 +19,13 @@ class SavedArticles extends HookWidget {
     return BlocProvider(
       create: (_) => sl<LocalArticleBloc>()..add(const GetSavedArticles()),
       child: Scaffold(
-        appBar: _buildAppBar(),
+        appBar: _buildAppBar(context),
         body: _buildBody(),
       ),
     );
   }
 
-  PreferredSizeWidget _buildAppBar() {
+  PreferredSizeWidget _buildAppBar(BuildContext context) {
     return AppBar(
       leading: Builder(
         builder: (context) => GestureDetector(
@@ -33,7 +34,9 @@ class SavedArticles extends HookWidget {
           child: const Icon(Ionicons.chevron_back),
         ),
       ),
-      title: const Text('Saved Articles'),
+      title: Text(
+        AppLocalizations.of(context)?.savedArticles ?? 'Saved Articles',
+      ),
     );
   }
 
@@ -43,18 +46,19 @@ class SavedArticles extends HookWidget {
         if (state is LocalArticlesLoading) {
           return const Center(child: CupertinoActivityIndicator());
         } else if (state is LocalArticlesDone) {
-          return _buildArticlesList(state.articles!);
+          return _buildArticlesList(state.articles!, context);
         }
         return Container();
       },
     );
   }
 
-  Widget _buildArticlesList(List<ArticleEntity> articles) {
+  Widget _buildArticlesList(
+      List<ArticleEntity> articles, BuildContext context) {
     if (articles.isEmpty) {
-      return const Center(
+      return Center(
           child: Text(
-        'NO SAVED ARTICLES',
+        AppLocalizations.of(context)?.noSavedArticles ?? 'No Saved Articles',
       ));
     }
 

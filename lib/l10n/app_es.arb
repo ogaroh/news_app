@@ -1,6 +1,10 @@
 {
-    "helloWorld": "¡Hola Mundo!",
-    "language" : "Espanol",
-    "message": "Has pulsado el botón tantas veces:",
-    "increment": "Incrementar"
+  "language": "Español",
+  "buttonHint": "Cambiar Idioma",
+  "savedArticles": "Artículos Guardados",
+  "saveArticle": "Guardar Artículo",
+  "headlines": "Titulares",
+  "changeLanguage": "Cambiar Idioma",
+  "noSavedArticles": "No hay artículos guardados",
+  "successMessage": "¡Artículo guardado exitosamente!"
 }

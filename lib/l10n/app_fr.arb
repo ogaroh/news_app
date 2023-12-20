@@ -1,6 +1,10 @@
 {
-  "helloWorld": "Bonjour le monde!",
-  "language" : "Français",
-  "message": "Vous avez appuyé sur le bouton autant de fois:",
-  "increment": "Incrémenter"
+  "language": "Français",
+  "buttonHint": "Changer de Langue",
+  "savedArticles": "Articles Sauvegardés",
+  "saveArticle": "Sauvegarder l'Article",
+  "headlines": "Titres",
+  "changeLanguage": "Changer de Langue",
+  "noSavedArticles": "Aucun article sauvegardé",
+  "successMessage": "Article sauvegardé avec succès !"
 }

@@ -1,6 +1,10 @@
 {
-  "helloWorld": "Hello World!",
   "language": "English",
-  "message": "You have pushed the button this many times:",
-  "increment": "Increment"
+  "buttonHint": "Change Language",
+  "savedArticles": "Saved Articles",
+  "saveArticle": "Save Article",
+  "headlines": "Headlines",
+  "changeLanguage": "Change Language",
+  "noSavedArticles": "No saved articles",
+  "successMessage": "Article saved successfully!"
 }

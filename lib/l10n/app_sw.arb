@@ -1,6 +1,10 @@
 {
-  "helloWorld": "Salamu, Dunia!",
-  "language" : "Swahili",
-  "message": "Umebofya kitufe hiki mara:" ,
-  "increment": "Ongeza"
+  "language": "Kiswahili",
+  "buttonHint": "Badilisha Lugha",
+  "savedArticles": "Makala Zilizohifadhiwa",
+  "saveArticle": "Hifadhi Makala",
+  "headlines": "Maneno Makuu",
+  "changeLanguage": "Badilisha Lugha",
+  "noSavedArticles": "Hakuna makala zilizohifadhiwa",
+  "successMessage": "Makala imehifadhiwa kwa mafanikio!"
 }

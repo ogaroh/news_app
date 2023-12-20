@@ -1,6 +1,9 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
+import 'package:provider/provider.dart';
+import '../../../../l10n/provider/locale.dart';
 import '../../domain/entities/article.dart';
 
 class ArticleWidget extends StatelessWidget {
@@ -80,52 +83,56 @@ class ArticleWidget extends StatelessWidget {
   }
 
   Widget _buildTitleAndDescription() {
-    return Expanded(
-      child: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 7),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            // Title
-            Text(
-              article!.title ?? '',
-              maxLines: 3,
-              overflow: TextOverflow.ellipsis,
-              style: const TextStyle(
-                fontWeight: FontWeight.w900,
-                fontSize: 18,
-              ),
-            ),
-
-            // Description
-            Expanded(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 4),
-                child: Text(
-                  article!.description ?? '',
-                  maxLines: 2,
+    return Consumer<LocaleModel>(builder: (context, localeModel, child) {
+      return Expanded(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(vertical: 7),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Title
+              Text(
+                article!.title ?? '',
+                maxLines: 3,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  fontWeight: FontWeight.w900,
+                  fontSize: 18,
                 ),
               ),
-            ),
 
-            // Datetime
-            Row(
-              children: [
-                const Icon(Icons.timeline_outlined, size: 16),
-                const SizedBox(width: 4),
-                Text(
-                  article!.publishedAt!,
-                  style: const TextStyle(
-                    fontSize: 12,
+              // Description
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 4),
+                  child: Text(
+                    article!.description ?? '',
+                    maxLines: 2,
                   ),
                 ),
-              ],
-            ),
-          ],
+              ),
+
+              // Datetime
+              Row(
+                children: [
+                  const Icon(Icons.timeline_outlined, size: 16),
+                  const SizedBox(width: 4),
+                  Text(
+                    DateFormat('d MMMM yyyy',
+                            localeModel.locale?.languageCode ?? "en_US")
+                        .format(DateTime.parse(article!.publishedAt!)),
+                    style: const TextStyle(
+                      fontSize: 12,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    });
   }
 
   Widget _buildRemovableArea() {
