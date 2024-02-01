@@ -34,7 +34,7 @@ class ArticleWidget extends StatelessWidget {
           children: [
             _buildImage(context),
             _buildTitleAndDescription(),
-            _buildRemovableArea(),
+            _buildRemovableArea(context),
           ],
         ),
       ),
@@ -137,13 +137,33 @@ class ArticleWidget extends StatelessWidget {
     });
   }
 
-  Widget _buildRemovableArea() {
+  Widget _buildRemovableArea(BuildContext context) {
     if (isRemovable!) {
       return GestureDetector(
-        onTap: _onRemove,
+        onTap: () => showAdaptiveDialog(
+          context: context,
+          builder: (context) => AlertDialog.adaptive(
+            title: const Text("Remove article"),
+            content:
+                const Text("Are you sure you want to delete this article?"),
+            actions: [
+              TextButton(
+                onPressed: () => Navigator.pop(context),
+                child: const Text("No"),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  _onRemove();
+                },
+                child: const Text("Yes"),
+              ),
+            ],
+          ),
+        ),
         child: const Padding(
           padding: EdgeInsets.symmetric(horizontal: 8),
-          child: Icon(Icons.delete, color: Colors.red),
+          child: Icon(Icons.delete_sweep, color: Colors.red),
         ),
       );
     }
