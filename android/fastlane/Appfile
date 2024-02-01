@@ -1,0 +1,2 @@
+json_key_file("/Users/erick/newspro-413021-657cf965189a.json") # Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
+package_name("io.github.ogaroh.news_app") # e.g. com.krausefx.app
