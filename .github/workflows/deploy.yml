@@ -17,6 +17,6 @@ jobs:
     runs-on: macos-latest
     steps:
       - uses: actions/checkout@v2
-      - run: fastlane internal
+      - run: cd android && fastlane internal
         env:
           JSON_KE_DATA: ${{ secrets.JSON_KEY }}
