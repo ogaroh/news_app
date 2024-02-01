@@ -20,12 +20,12 @@ default_platform(:android)
 platform :android do
   desc "Runs all the tests"
   lane :test do
-    gradle(task: "test")
+    gradle(task: "test", project_dir: 'android/')
   end
 
   desc "Submit a new Internal Build to Play Store"
   lane :internal do
-    gradle(task: 'assemble', build_type: 'Release')
+    gradle(task: 'assemble', build_type: 'Release', project_dir: 'android/')
     upload_to_play_store(track: 'internal', track_promote_to: 'alpha', skip_upload_changelogs: true, json_key_data: json_key_data)
   
     # sh "your_script.sh"
@@ -34,7 +34,7 @@ platform :android do
 
   desc "Submit a new Beta Build to Crashlytics Beta"
   lane :beta do
-    gradle(task: 'assemble', build_type: 'Release')
+    gradle(task: 'assemble', build_type: 'Release', project_dir: 'android/')
     upload_to_play_store(track: 'beta', skip_upload_changelogs: tru, json_key_data: json_key_datae)
     crashlytics
   
@@ -44,7 +44,7 @@ platform :android do
 
   desc "Deploy a new version to the Google Play"
   lane :deploy do
-    gradle(task: "clean assembleRelease")
+    gradle(task: "clean assembleRelease", project_dir: 'android/')
     upload_to_play_store(json_key_data: json_key_data)
   end
 end
