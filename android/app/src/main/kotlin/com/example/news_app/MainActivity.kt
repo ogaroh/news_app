@@ -1,4 +1,4 @@
-package com.example.news_app
+package io.github.ogaroh.news_app
 
 import io.flutter.embedding.android.FlutterActivity
 
