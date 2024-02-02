@@ -13,20 +13,18 @@
 # Uncomment the line if you want fastlane to automatically update itself
 # update_fastlane
 
-json_key_data = ENV['JSON_KEY_DATA']
-
 default_platform(:android)
 
 platform :android do
   desc "Runs all the tests"
   lane :test do
     gradle(task: "test")
-  end
+  ends
 
   desc "Submit a new Internal Build to Play Store"
   lane :internal do
     gradle(task: 'assemble', build_type: 'Release')
-    upload_to_play_store(track: 'internal', track_promote_to: 'alpha', skip_upload_changelogs: true, json_key_data: json_key_data)
+    upload_to_play_store(track: 'internal', track_promote_to: 'alpha', skip_upload_changelogs: true)
   
     # sh "your_script.sh"
     # You can also use other services here
@@ -35,7 +33,7 @@ platform :android do
   desc "Submit a new Beta Build to Crashlytics Beta"
   lane :beta do
     gradle(task: 'assemble', build_type: 'Release')
-    upload_to_play_store(track: 'beta', skip_upload_changelogs: tru, json_key_data: json_key_datae)
+    upload_to_play_store(track: 'beta', skip_upload_changelogs: true)
     crashlytics
   
     # sh "your_script.sh"
@@ -45,6 +43,6 @@ platform :android do
   desc "Deploy a new version to the Google Play"
   lane :deploy do
     gradle(task: "clean assembleRelease")
-    upload_to_play_store(json_key_data: json_key_data)
+    upload_to_play_store
   end
 end
