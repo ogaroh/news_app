@@ -1,4 +1,5 @@
 name: flutter-github-actions
+
 on:
   push:
     branches:
@@ -6,19 +7,33 @@ on:
   pull_request:
     branches:
       - main
+
 jobs:
-check-bats-version:
-runs-on: ubuntu-latest
-steps:
-- uses: actions/checkout@v2
-- uses: actions/setup-java@v2 #plugin for setting up the java
-with:
-distribution: ‘zulu’
-java-version: ‘21’ #defines the java version
-- uses: subosito/flutter-action@v2
-with:
-flutter-version: ‘3.16.9’ #You can define the flutter version.
-- run: flutter pub get #installing the plugins for the flutter project
-- run: flutter test #running flutter test
-- run: flutter build apk #building flutter apk
-- run: flutter build appbundle #building flutter bundle
+  check-bats-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Setup Java
+        uses: actions/setup-java@v2
+        with:
+          distribution: 'zulu'
+          java-version: '21'
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: '3.16.9'
+
+      - name: Install Flutter dependencies
+        run: flutter pub get
+
+      - name: Run Flutter tests
+        run: flutter test
+
+      - name: Build Flutter APK
+        run: flutter build apk
+
+      - name: Build Flutter App Bundle
+        run: flutter build appbundle
