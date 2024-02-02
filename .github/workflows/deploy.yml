@@ -1,22 +1,24 @@
-#
-# A simple way to automate your Flutter app deployment using GitHub Actions. 
-# Note: this workflow does not work as-is, you will need to add the relevant secrets and keys
-# as well as update the fastlane match configuration to match your app's bundle identifier.
-#
-
-name: Flutter CI/CD 
-
+name: flutter-github-actions
 on:
   push:
-    branches: ["main"]
+    branches:
+      - main
   pull_request:
-    branches: ["main"]
-
+    branches:
+      - main
 jobs:
-  build:
-    runs-on: macos-latest
-    steps:
-      - uses: actions/checkout@v2
-      - run: cd android && fastlane internal
-        env:
-          JSON_KE_DATA: ${{ secrets.JSON_KEY }}
+check-bats-version:
+runs-on: ubuntu-latest
+steps:
+- uses: actions/checkout@v2
+- uses: actions/setup-java@v2 #plugin for setting up the java
+with:
+distribution: ‘zulu’
+java-version: ‘21’ #defines the java version
+- uses: subosito/flutter-action@v2
+with:
+flutter-version: ‘3.16.9’ #You can define the flutter version.
+- run: flutter pub get #installing the plugins for the flutter project
+- run: flutter test #running flutter test
+- run: flutter build apk #building flutter apk
+- run: flutter build appbundle #building flutter bundle
