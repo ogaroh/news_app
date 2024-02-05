@@ -1,48 +1,39 @@
-# This file contains the fastlane.tools configuration
-# You can find the documentation at https://docs.fastlane.tools
-#
-# For a list of all available actions, check out
-#
-#     https://docs.fastlane.tools/actions
-#
-# For a list of all available plugins, check out
-#
-#     https://docs.fastlane.tools/plugins/available-plugins
-#
-
-# Uncomment the line if you want fastlane to automatically update itself
-# update_fastlane
-
 default_platform(:android)
 
-platform :android do
-  desc "Runs all the tests"
-  lane :test do
-    gradle(task: "test")
-  ends
+lane :increase_build_number do
+  # script.rb is a ruby script that increments the build number in pubspec.yaml
+  system("ruby ../script.rb")
+end
 
-  desc "Submit a new Internal Build to Play Store"
-  lane :internal do
-    gradle(task: 'assemble', build_type: 'Release')
-    upload_to_play_store(track: 'internal', track_promote_to: 'alpha', skip_upload_changelogs: true)
-  
-    # sh "your_script.sh"
-    # You can also use other services here
-  end
+# upload to internal test to Google Play
+lane :internal do 
+  # build the app bundle if you haven't already 
+  gradle(task: 'bundleRelease')
+  # Upload to internal test
+  upload_to_play_store(
+    track: 'internal',
+    aab: '../build/app/outputs/bundle/release/app-release.aab', # Update this path if your AAB is generated in a different location
+    skip_upload_apk: true,
+    skip_upload_images: true,
+    skip_upload_screenshots: true,
+    skip_upload_metadata: true,
+    skip_upload_changelogs: true,
+    skip_upload_aab: false,
+  )
+end
 
-  desc "Submit a new Beta Build to Crashlytics Beta"
-  lane :beta do
-    gradle(task: 'assemble', build_type: 'Release')
-    upload_to_play_store(track: 'beta', skip_upload_changelogs: true)
-    crashlytics
-  
-    # sh "your_script.sh"
-    # You can also use other beta testing services here
-  end
-
-  desc "Deploy a new version to the Google Play"
-  lane :deploy do
-    gradle(task: "clean assembleRelease")
-    upload_to_play_store
-  end
+# upload release to Google Play
+lane :release do
+  gradle(task: 'bundleRelease')
+  # Upload to internal test
+  upload_to_play_store(
+    track: 'production',
+    aab: '../build/app/outputs/bundle/release/app-release.aab', # Update this path if your AAB is generated in a different location
+    skip_upload_apk: true,
+    skip_upload_images: true,
+    skip_upload_screenshots: true,
+    skip_upload_metadata: true,
+    skip_upload_changelogs: true,
+    skip_upload_aab: false,
+  )
 end
