@@ -1,17 +1,22 @@
-name: flutter-github-actions
+name: Build flutter app and deploy using fastlane
 
 on:
   push:
     branches:
       - main
+      - dev
   pull_request:
     branches:
       - main
+      - dev
 
 jobs:
   check-bats-version:
     runs-on: ubuntu-latest
     steps:
+      - name: Flutter Runner
+        uses: jddeep/Flutter-Runner@1.2.0
+  
       - name: Checkout repository
         uses: actions/checkout@v2
 
