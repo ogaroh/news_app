@@ -8,9 +8,11 @@ platform :android do
     # sh "cd .. && cd .. && cd .. && melos bootstrap"
     sh "cd .. && flutter build appbundle"
     upload_to_play_store(
-        track: "internal",
-        aab: "../build/app/outputs/bundle/release/app-release.aab",
-        skip_upload_images: true,
-        skip_upload_screenshots: true)
+      track: "internal",
+      aab: "../build/app/outputs/bundle/release/app-release.aab",
+      skip_upload_images: true,
+      skip_upload_screenshots: true
+      json_key: ENV["PLAY_STORE_CONFIG_JSON"]
+    )
   end
 end
