@@ -12,7 +12,7 @@ platform :android do
       aab: "../build/app/outputs/bundle/release/app-release.aab",
       skip_upload_images: true,
       skip_upload_screenshots: true,
-      json_key: ENV["PLAY_STORE_CONFIG_JSON"]
+      json_key: ENV["FASTLANE_JSON_KEY_FILE"]
     )
   end
 end

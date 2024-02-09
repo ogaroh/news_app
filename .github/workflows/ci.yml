@@ -64,6 +64,7 @@ jobs:
         run: |
           bundle install
           bundle exec fastlane ${{ github.event.inputs.lane || 'internal' }}
+          echo "$FASTLANE_JSON_KEY_FILE"
         env:
           FASTLANE_JSON_KEY_FILE: fastlane/play_store_config.json
         working-directory: ./android
