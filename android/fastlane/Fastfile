@@ -48,7 +48,7 @@ default_platform(:android)
 platform :android do
   desc "Submit a new Internal Build to Play Store internal track"
   lane :internal do
-    sh "cd .. && cd .. && cd .. && melos bootstrap"
+    # sh "cd .. && cd .. && cd .. && melos bootstrap"
     sh "cd .. && flutter build appbundle"
     upload_to_play_store(
         track: "internal",
