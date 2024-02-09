@@ -1,39 +1,59 @@
+
+
+# default_platform(:android)
+
+# lane :increase_build_number do
+#   # script.rb is a ruby script that increments the build number in pubspec.yaml
+#   system("ruby ../script.rb")
+# end
+
+# # upload to internal test to Google Play
+# lane :internal do 
+#   # build the app bundle if you haven't already 
+#   gradle(task: 'bundleRelease')
+#   # Upload to internal test
+#   upload_to_play_store(
+#     track: 'internal',
+#     aab: '../build/app/outputs/bundle/release/app-release.aab', # Update this path if your AAB is generated in a different location
+#     skip_upload_apk: true,
+#     skip_upload_images: true,
+#     skip_upload_screenshots: true,
+#     skip_upload_metadata: true,
+#     skip_upload_changelogs: true,
+#     skip_upload_aab: false,
+#   )
+# end
+
+# # upload release to Google Play
+# lane :release do
+#   gradle(task: 'bundleRelease')
+#   # Upload to internal test
+#   upload_to_play_store(
+#     track: 'production',
+#     aab: '../build/app/outputs/bundle/release/app-release.aab', # Update this path if your AAB is generated in a different location
+#     skip_upload_apk: true,
+#     skip_upload_images: true,
+#     skip_upload_screenshots: true,
+#     skip_upload_metadata: true,
+#     skip_upload_changelogs: true,
+#     skip_upload_aab: false,
+#   )
+# end
+
+
+update_fastlane
+
 default_platform(:android)
 
-lane :increase_build_number do
-  # script.rb is a ruby script that increments the build number in pubspec.yaml
-  system("ruby ../script.rb")
-end
-
-# upload to internal test to Google Play
-lane :internal do 
-  # build the app bundle if you haven't already 
-  gradle(task: 'bundleRelease')
-  # Upload to internal test
-  upload_to_play_store(
-    track: 'internal',
-    aab: '../build/app/outputs/bundle/release/app-release.aab', # Update this path if your AAB is generated in a different location
-    skip_upload_apk: true,
-    skip_upload_images: true,
-    skip_upload_screenshots: true,
-    skip_upload_metadata: true,
-    skip_upload_changelogs: true,
-    skip_upload_aab: false,
-  )
-end
-
-# upload release to Google Play
-lane :release do
-  gradle(task: 'bundleRelease')
-  # Upload to internal test
-  upload_to_play_store(
-    track: 'production',
-    aab: '../build/app/outputs/bundle/release/app-release.aab', # Update this path if your AAB is generated in a different location
-    skip_upload_apk: true,
-    skip_upload_images: true,
-    skip_upload_screenshots: true,
-    skip_upload_metadata: true,
-    skip_upload_changelogs: true,
-    skip_upload_aab: false,
-  )
+platform :android do
+  desc "Submit a new Internal Build to Play Store internal track"
+  lane :internal do
+    sh "cd .. && cd .. && cd .. && melos bootstrap"
+    sh "cd .. && flutter build appbundle"
+    upload_to_play_store(
+        track: "internal",
+        aab: "../build/app/outputs/bundle/release/app-release.aab",
+        skip_upload_images: true,
+        skip_upload_screenshots: true)
+  end
 end
