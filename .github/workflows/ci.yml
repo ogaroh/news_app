@@ -1,5 +1,9 @@
 name: Deploy to Play Store
 on:
+  # automated run
+  push:
+    branches: [dev, main, "releases/**"]
+
   # Enable manual run
   workflow_dispatch:
     inputs:
