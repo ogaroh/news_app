@@ -1,2 +1,3 @@
-json_key_file("C:/Users/erick.ogaro/newspro-413021-657cf965189a.json") # Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
+# json_key_file("C:/Users/erick.ogaro/newspro-413021-657cf965189a.json") # Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
+# json_key_file("fastlane/play_store_config.json") # Path to the json secret file - Follow https://docs.fastlane.tools/actions/supply/#setup to get one
 package_name("io.github.ogaroh.news_app")
